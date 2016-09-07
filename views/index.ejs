@@ -7,22 +7,68 @@
   <link rel="stylesheet" href="/css/main.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
  </head>
  <body>
    <img src="http://i.imgur.com/qXnHvzM.png" alt="">
    <h1>Weekly Sales Data for Walmart</h1>
-
-     <input type="text" placeholder="Temperature" id="temp"><br>
-     <input type="text" placeholder="Fuel Price" id="fuel"><br>
-     <input type="text" placeholder="CPI" id="cpi"><br>
-     <input type="text" placeholder="Unemployment" id="unemploy"><br>
-     <input type="text" placeholder="Is Holiday" id="holiday"><br>
-     <input type="text" placeholder="Type" id="type"><br>
-     <input type="text" placeholder="Size" id="size"><br>
-     <input type="text" placeholder="Department" id="dept"><br>
+    <form action='/walchart' method='GET'>
+     <input type="text" placeholder="Temperature" id="temp" value="42.2"><br>
+     <input type="text" placeholder="Fuel Price" id="fuel" value="8.6"><br>
+     <input type="text" placeholder="CPI" id="cpi" value="100.0"><br>
+     <input type="text" placeholder="Unemployment" id="unemploy" value="2.2"><br>
+     <input type="text" placeholder="Is Holiday" id="holiday" value="1"><br>
+     <input type="text" placeholder="Type" id="type" value="1"><br>
+     <input type="text" placeholder="Size" id="size" value="145000"><br>
+     <input type="text" placeholder="Department" id="dept" value="15"><br>
     <input type="submit" id="button">
+    </form>
+  <canvas id="myChart" width="800" height="250"></canvas>
 
-   <div id="chart_div"></div>
+<script>
+let ctx = $('#myChart');
+let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Weekly Sales"],
+        datasets: [{
+            label: 'All the money',
+          <% if(sales=0){ %>
+            data: [<%=sales%>],
+          <% } else { %>
+            data: [0],
+          <% } %>
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)'
+                // 'rgba(255, 99, 132, 0.2)',
+                // 'rgba(54, 162, 235, 0.2)',
+                // 'rgba(255, 206, 86, 0.2)',
+                // 'rgba(75, 192, 192, 0.2)',
+                // 'rgba(153, 102, 255, 0.2)',
+                // 'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)'
+                // 'rgba(54, 162, 235, 1)',
+                // 'rgba(255, 206, 86, 1)',
+                // 'rgba(75, 192, 192, 1)',
+                // 'rgba(153, 102, 255, 1)',
+                // 'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
  </body>
 </html>
