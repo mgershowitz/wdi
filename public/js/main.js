@@ -14,7 +14,7 @@ const getSalesReport = (temp,fuel,cpi,unemploy,holiday,type,size,dept) => {
       })
 }
 
-getSalesReport(42.5,8.6,100.0,2.2,1,1,145000,15)
+// getSalesReport(42.5,8.6,100.0,2.2,1,1,145000,15)
 
 // Load the Visualization API and the corechart package.
      google.charts.load('current', {'packages':['corechart']});
@@ -46,3 +46,33 @@ getSalesReport(42.5,8.6,100.0,2.2,1,1,145000,15)
        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
        chart.draw(data, options);
      }
+
+$(()=>{
+  $('#button').on('click',(e) => {
+    console.log('clicked')
+    e.preventDefault();
+    let temp     = $("#temp").val()
+    let fuel     = $("#fuel").val()
+    let cpi      = $("#cpi").val()
+    let unemploy = $("#unemploy").val()
+    let holiday  = $("#holiday").val()
+    let type     = $("#type").val()
+    let size     = $("#size").val()
+    let dept     = $("#dept").val()
+    getSalesReport(temp,fuel,cpi,unemploy,holiday,type,size,dept)
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
