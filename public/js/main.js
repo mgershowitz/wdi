@@ -1,12 +1,21 @@
 console.log('loaded')
 
-let twoWeek = 0
-let oneWeek = 0
+let twoWeek  = 0
+let oneWeek  = 0
 let thisWeek = 0
 
-const getSalesReport = () => {
-
+const getSalesReport = (temp,fuel,cpi,unemploy,holiday,type,size,dept) => {
+  return fetch(`/walchart?t=${temp}&f=${fuel}&c=${cpi}&u=${unemploy}&i=${holiday}&ty=${type}&s=${size}&d=${dept}`)
+    .then(res=>res.json())
+    .then(res=>{
+      twoWeek = oneWeek;
+      oneWeek = thisWeek;
+      thisWeek = res.weekly_sales;
+      })
 }
+
+getSalesReport(42.5,8.6,100.0,2.2,1,1,145000,15)
+
 // Load the Visualization API and the corechart package.
      google.charts.load('current', {'packages':['corechart']});
 
@@ -26,11 +35,6 @@ const getSalesReport = () => {
          ["2 weeks", twoWeek],
          ["1 week", oneWeek],
          ["This Week", thisWeek]
-
-         // ['Onions', 1],
-         // ['Olives', 1],
-         // ['Zucchini', 1],
-         // ['Pepperoni', 2]
        ]);
 
        // Set chart options
@@ -39,6 +43,6 @@ const getSalesReport = () => {
                       'height':600};
 
        // Instantiate and draw our chart, passing in some options.
-       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
        chart.draw(data, options);
      }
