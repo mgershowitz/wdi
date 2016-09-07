@@ -1,7 +1,11 @@
-import React     from 'react'
+// import React     from 'react'
 
-// import ajax      from '../helpers/ajaxAdapter.js'
-import chart     from './chart.js'
+// const {Line}    = require("react-chartjs");
+
+// import chart     from './chart.js'
+const React = require('react');
+const Chart = require('chart.js');
+const LineChart = require("react-chartjs").Line;
 
 // var MyChart = React.createClass({
   // render: function(){
@@ -12,7 +16,7 @@ export default class Results extends React.Component {
   render(){
     return (
 
-       <Line id="walmart" data={chart.data} width="600" height="250"/>
+       <LineChart id="walmart" data={chart.data} width="600" height="250"/>
 
 
       )
