@@ -16,23 +16,13 @@ walchartCall(req,res,next) {
         Size: req.query.s,
         Dept: req.query.d
       },
-      // qs: {
-      //   Temperature: '42.2',
-      //   Fuel_Price: '8.6',
-      //   CPI: '100.0',
-      //   Unemployment: '2.2',
-      //   IsHoliday: '1',
-      //   Type: '1',
-      //   Size: '145000',
-      //   Dept: '15'
-      // },
       json:true
     }
     ,(err,result,body)=>{
       if (err) throw err;
       res.sales = result.body
       // res.sales = result.body.weekly_sales
-      // console.log(typeof res.sales)
+      console.log(result.body,"======================")
       next()
     })
   }

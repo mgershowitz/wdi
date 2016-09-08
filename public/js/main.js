@@ -9,7 +9,7 @@ let thisWeek = 0
 
 const getSalesReport = (temp,fuel,cpi,unemploy,holiday,type,size,dept) => {
   return fetch(`/walchart?t=${temp}&f=${fuel}&c=${cpi}&u=${unemploy}&i=${holiday}&ty=${type}&s=${size}&d=${dept}`)
-    .then(res=>console.log(res))
+    .then(res=>console.log('yes'))
       }
 
 
@@ -87,15 +87,15 @@ $(()=>{
   $('#button').on('click',(e) => {
     // e.preventDefault()
     console.log('clicked')
-    let temp     = $("#temp").val()
-    let fuel     = $("#fuel").val()
-    let cpi      = $("#cpi").val()
-    let unemploy = $("#unemploy").val()
-    let holiday  = $("#holiday").val()
-    let type     = $("#type").val()
-    let size     = $("#size").val()
-    let dept     = $("#dept").val()
-    getSalesReport(temp,fuel,cpi,unemploy,holiday,type,size,dept)
+    let defaultTemp     = $("#temp").val()
+    let defaultFuel     = $("#fuel").val()
+    let defaultCpi      = $("#cpi").val()
+    let defaultUnemploy = $("#unemploy").val()
+    let defaultHoliday  = $("#holiday").val()
+    let defaultType     = $("#type").val()
+    let defaultSize     = $("#size").val()
+    let defaultDept     = $("#dept").val()
+    getSalesReport(defaultTemp,defaultFuel,defaultCpi,defaultUnemploy,defaultHoliday,defaultType,defaultSize,defaultDept)
   })
 })
 

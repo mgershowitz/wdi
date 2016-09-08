@@ -34,11 +34,7 @@ let myChart = new Chart(ctx, {
         labels: ["Weekly Sales"],
         datasets: [{
             label: 'All the money',
-          <% if(sales=0){ %>
             data: [<%=sales%>],
-          <% } else { %>
-            data: [0],
-          <% } %>
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)'
                 // 'rgba(255, 99, 132, 0.2)',
